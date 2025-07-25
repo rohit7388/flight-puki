@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FraudShield Web App</title>
+    <style>
+        body { font-family: Arial; background-color: #f9f9f9; margin: 50px; }
+        h1 { color: #333; }
+        form { margin-top: 20px; }
+        input { margin: 10px 0; padding: 8px; width: 200px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 30px; font-size: 1.2em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>💳 FraudShield Prediction</h1>
+    <form method="POST">
+        <label>Duration:</label><br>
+        <input type="number" step="0.01" name="duration" required><br>
+        <label>Days Left:</label><br>
+        <input type="number" step="0.01" name="days_left" required><br>
+        <label>Price ($):</label><br>
+        <input type="number" step="0.01" name="price" required><br>
+        <button type="submit">Predict Fraud</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Result: {{ prediction }}<br>
+            Confidence Score: {{ probability }}
+        </div>
+    {% endif %}
+</body>
+</html>
