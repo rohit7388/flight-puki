@@ -2,3 +2,5 @@ streamlit
 numpy
 pandas
 scikit-learn
+Flask==2.3.3
+Flask
