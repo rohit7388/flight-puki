@@ -1,39 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FraudShield Web App</title>
-    <style>
-        body { font-family: Arial; background-color: #f9f9f9; margin: 50px; }
-        h1 { color: #333; }
-        form { margin-top: 20px; }
-        input { margin: 10px 0; padding: 8px; width: 200px; }
-        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .result { margin-top: 30px; font-size: 1.2em; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #0078D7;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005ea6;
+    }
+  </style>
 </head>
 <body>
-    <h1>💳 FraudShield Prediction</h1>
-    <form method="POST">
-        <label>Duration:</label><br>
-        <input type="number" step="0.01" name="duration" required><br>
 
-        <label>Days Left:</label><br>
-        <input type="number" step="0.01" name="days_left" required><br>
+  <h1>✈️ Flight Price Prediction</h1>
+  <form>
+    <label for="departure">Departure City</label>
+    <input type="text" id="departure" name="departure" placeholder="e.g., Delhi" required />
 
-        <label>Price ($):</label><br>
-        <input type="number" step="0.01" name="price" required><br>
+    <label for="arrival">Arrival City</label>
+    <input type="text" id="arrival" name="arrival" placeholder="e.g., Mumbai" required />
 
-        <label>Extra Feature:</label><br>
-        <input type="number" step="0.01" name="extra_feature" required><br>
+    <label for="depart-date">Departure Date</label>
+    <input type="date" id="depart-date" name="depart-date" required />
 
-        <button type="submit">Predict Fraud</button>
-    </form>
+    <label for="return-date">Arrival Date</label>
+    <input type="date" id="return-date" name="return-date" required />
 
-    {% if prediction %}
-        <div class="result">
-            Result: {{ prediction }}<br>
-            Confidence Score: {{ probability }}
-        </div>
-    {% endif %}
+    <label for="airline">Airline</label>
+    <input type="text" id="airline" name="airline" placeholder="e.g., IndiGo" required />
+
+    <label for="stops">Number of Stops</label>
+    <select id="stops" name="stops">
+      <option value="0">Non-stop</option>
+      <option value="1">1 Stop</option>
+      <option value="2">2 Stops</option>
+    </select>
+
+    <label for="duration">Duration (hrs)</label>
+    <input type="number" step="0.1" id="duration" name="duration" required />
+
+    <label for="class">Class</label>
+    <select id="class" name="class">
+      <option value="Economy">Economy</option>
+      <option value="Business">Business</option>
+    </select>
+
+    <label for="booking-days">Booking Time Ahead (days)</label>
+    <input type="number" id="booking-days" name="booking-days" required />
+
+    <button type="submit">Predict Price</button>
+  </form>
+
 </body>
 </html>
